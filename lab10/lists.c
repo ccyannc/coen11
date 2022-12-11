@@ -16,8 +16,6 @@ void insert(char *fn, char *ln, int age) { //f
 		return;
 	}
 	
-	
-	
 	strcpy(p->first, fn);
 	strcpy(p->last, ln);
 	p-> age = age;
@@ -34,6 +32,7 @@ void insert(char *fn, char *ln, int age) { //f
 	
 	if (database[index].head == NULL) { //if empty
 		database[index].head = p;
+		database[index].tail = p;
 		p -> next = NULL;
 	} else if (database[index].tail == NULL) { //if only one element head
 		database[index].tail = p;
@@ -108,6 +107,7 @@ void delete(char *fn, char *ln) {
 			//only one element
 			if (p -> next == NULL && q == database[0].head) {
 				database[0].head = NULL;
+				database[0].tail = NULL;
 				free(p);
 				return;
 			}
